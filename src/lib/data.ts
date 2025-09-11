@@ -55,29 +55,4 @@ export const education = [
   },
 ];
 
-export const projects = [
-  {
-    title: "Sentiment Analysis of Movie Reviews",
-    description:
-      "Developed a machine learning model to classify movie reviews as positive or negative. Used a dataset from IMDb and applied Natural Language Processing techniques for text preprocessing. The final model, a Long Short-Term Memory (LSTM) network built with TensorFlow, achieved 92% accuracy on the test set.",
-    techStack: ["Python", "TensorFlow", "Pandas", "NLTK", "Scikit-learn"],
-    githubLink: "https://github.com/paramveersingh/sentiment-analysis",
-    liveDemoLink: null,
-  },
-  {
-    title: "Real-time Object Detection System",
-    description:
-      "Created a real-time object detection system using the YOLOv4 algorithm and OpenCV. The system can detect and classify multiple objects in a video stream from a webcam. The project involved training the model on a custom dataset and optimizing it for real-time performance. This showcases skills in computer vision and deep learning model deployment.",
-    techStack: ["Python", "OpenCV", "TensorFlow", "YOLOv4", "Computer Vision"],
-    githubLink: "https://github.com/paramveersingh/object-detection",
-    liveDemoLink: "https://example.com/object-detection-demo",
-  },
-  {
-    title: "Sales Prediction with Machine Learning",
-    description:
-      "Built a predictive model to forecast future sales for a retail company. The project involved extensive data cleaning, feature engineering, and exploratory data analysis on historical sales data. Implemented and compared several regression models including Linear Regression, Random Forest, and Gradient Boosting, with the Gradient Boosting model showing the best performance.",
-    techStack: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
-    githubLink: "https://github.com/paramveersingh/sales-prediction",
-    liveDemoLink: null,
-  },
-];
+export const projects: any[] = [];

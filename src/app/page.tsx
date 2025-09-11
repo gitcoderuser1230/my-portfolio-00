@@ -13,7 +13,7 @@ import { ProjectCard } from "@/components/project-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Github, Linkedin, Mail, Twitter, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection } from "@/components/animated-section";
@@ -98,10 +98,10 @@ export default function Home() {
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                 Projects Showcase
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project, index) => (
-                  <ProjectCard key={index} project={project} />
-                ))}
+              <div className="text-center text-muted-foreground">
+                <Construction className="mx-auto h-16 w-16 mb-4 text-primary" />
+                <h3 className="text-2xl font-semibold mb-2">Projects Coming Soon</h3>
+                <p>I'm currently working on exciting new projects. Please check back later!</p>
               </div>
             </section>
           </AnimatedSection>
