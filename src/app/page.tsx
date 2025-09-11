@@ -17,6 +17,7 @@ import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction } from "lucid
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection } from "@/components/animated-section";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 export default function Home() {
   const profilePhoto = PlaceHolderImages.find((p) => p.id === "profile-photo");
@@ -150,20 +151,36 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center justify-center space-y-6">
                   <h3 className="font-headline text-xl font-semibold">Or find me on</h3>
-                  <div className="flex justify-center gap-6 text-foreground">
-                    <Link href={`mailto:${contact.email}`} aria-label="Email" className="hover:text-primary transition-colors">
-                      <Mail className="h-8 w-8" />
-                    </Link>
-                    <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
-                      <Linkedin className="h-8 w-8" />
-                    </Link>
-                    <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
-                      <Github className="h-8 w-8" />
-                    </Link>
-                    <Link href={contact.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary transition-colors">
-                      <Twitter className="h-8 w-8" />
-                    </Link>
-                  </div>
+                  <TooltipProvider>
+                    <div className="flex justify-center gap-6 text-foreground">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="hover:text-primary transition-colors cursor-pointer">
+                            <Mail className="h-8 w-8" />
+                          </span>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Email coming soon!</p>
+                        </TooltipContent>
+                      </Tooltip>
+                      <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
+                        <Linkedin className="h-8 w-8" />
+                      </Link>
+                      <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
+                        <Github className="h-8 w-8" />
+                      </Link>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="hover:text-primary transition-colors cursor-pointer">
+                            <Twitter className="h-8 w-8" />
+                          </span>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Twitter coming soon!</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </TooltipProvider>
                 </div>
               </div>
             </section>
