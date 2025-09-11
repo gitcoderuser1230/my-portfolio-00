@@ -9,7 +9,7 @@ import {
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ProjectCard } from "@/components/project-card";
+import { ContactForm } from "@/components/contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -142,21 +142,29 @@ export default function Home() {
                 Contact Me
               </h2>
               <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out.
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out using the form below or through my social channels.
               </p>
-              <div className="flex justify-center gap-6 text-foreground">
-                <Link href={`mailto:${contact.email}`} aria-label="Email" className="hover:text-primary transition-colors">
-                  <Mail className="h-8 w-8" />
-                </Link>
-                <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
-                  <Linkedin className="h-8 w-8" />
-                </Link>
-                <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
-                  <Github className="h-8 w-8" />
-                </Link>
-                <Link href={contact.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary transition-colors">
-                  <Twitter className="h-8 w-8" />
-                </Link>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="md:col-span-2">
+                  <ContactForm />
+                </div>
+                <div className="flex flex-col items-center justify-center space-y-6">
+                  <h3 className="font-headline text-xl font-semibold">Or find me on</h3>
+                  <div className="flex justify-center gap-6 text-foreground">
+                    <Link href={`mailto:${contact.email}`} aria-label="Email" className="hover:text-primary transition-colors">
+                      <Mail className="h-8 w-8" />
+                    </Link>
+                    <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
+                      <Linkedin className="h-8 w-8" />
+                    </Link>
+                    <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
+                      <Github className="h-8 w-8" />
+                    </Link>
+                    <Link href={contact.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary transition-colors">
+                      <Twitter className="h-8 w-8" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </section>
           </AnimatedSection>
