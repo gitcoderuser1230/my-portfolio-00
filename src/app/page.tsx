@@ -151,36 +151,20 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center justify-center space-y-6">
                   <h3 className="font-headline text-xl font-semibold">Or find me on</h3>
-                  <TooltipProvider>
-                    <div className="flex justify-center gap-6 text-foreground">
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <span className="hover:text-primary transition-colors cursor-pointer">
-                            <Mail className="h-8 w-8" />
-                          </span>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Email coming soon!</p>
-                        </TooltipContent>
-                      </Tooltip>
-                      <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
-                        <Linkedin className="h-8 w-8" />
-                      </Link>
-                      <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
-                        <Github className="h-8 w-8" />
-                      </Link>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <span className="hover:text-primary transition-colors cursor-pointer">
-                            <Twitter className="h-8 w-8" />
-                          </span>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Twitter coming soon!</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </TooltipProvider>
+                  <div className="flex justify-center gap-6 text-foreground">
+                    <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
+                      <Mail className="h-8 w-8" />
+                    </a>
+                    <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
+                      <Linkedin className="h-8 w-8" />
+                    </Link>
+                    <Link href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
+                      <Github className="h-8 w-8" />
+                    </Link>
+                    <Link href={contact.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary transition-colors">
+                      <Twitter className="h-8 w-8" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </section>
