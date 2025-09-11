@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "profile-photo",
-      "description": "A professional headshot of Paramveer Singh",
-      "imageUrl": "https://storage.googleapis.com/maker-studio-project-files-prod/39470876-02d2-43c3-886d-0ac568779603/f519eb31-4e4c-4734-b26a-97a780c10972",
-      "imageHint": "professional man"
+      "description": "An anonymous person holding a hat",
+      "imageUrl": "https://picsum.photos/seed/hat-guy/300/300",
+      "imageHint": "anonymous man hat"
     }
   ]
 }
