@@ -54,7 +54,7 @@ export function ProjectCard({ project }: { project: Project }) {
   }, [project.description, project.techStack, toast]);
 
   return (
-    <Card className="flex flex-col h-full hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
+    <Card className="flex flex-col h-full bg-card/80 backdrop-blur-sm hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
       </CardHeader>

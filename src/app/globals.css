@@ -61,6 +61,13 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .bg-image-container {
+    background-image: url('https://picsum.photos/seed/dark-forest/1920/1080');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
 }
 
 @layer utilities {
