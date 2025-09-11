@@ -8,7 +8,7 @@ export const profile = {
 
 export const contact = {
   email: "paramveer@example.com",
-  linkedin: "https://www.linkedin.com/in/paramveersingh",
+  linkedin: "https://www.linkedin.com/in/paramveer-singh-169b1034b",
   github: "https://github.com/paramveersingh",
   twitter: "https://twitter.com/paramveersingh",
 };
