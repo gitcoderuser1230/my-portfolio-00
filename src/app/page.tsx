@@ -25,44 +25,42 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <AnimatedSection>
-          <section id="hero" className="container grid grid-cols-1 md:grid-cols-3 gap-8 py-20 md:py-32">
-            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left col-span-2">
-              <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                {profile.name}
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-                {profile.title}
-              </p>
-              <p className="max-w-xl text-lg text-foreground/80 mb-8">
-                {profile.introduction}
-              </p>
-              <div className="flex gap-4">
-                <Button asChild size="lg">
-                  <a href="#contact">
-                    Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                </Button>
-                <Button asChild variant="secondary" size="lg">
-                  <a href="#projects">View My Work</a>
-                </Button>
-              </div>
+        <section id="hero" className="container grid grid-cols-1 md:grid-cols-3 gap-8 py-20 md:py-32">
+          <AnimatedSection direction="left" className="flex flex-col justify-center items-center md:items-start text-center md:text-left col-span-2">
+            <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+              {profile.name}
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+              {profile.title}
+            </p>
+            <p className="max-w-xl text-lg text-foreground/80 mb-8">
+              {profile.introduction}
+            </p>
+            <div className="flex gap-4">
+              <Button asChild size="lg">
+                <a href="#contact">
+                  Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+              <Button asChild variant="secondary" size="lg">
+                <a href="#projects">View My Work</a>
+              </Button>
             </div>
-            <div className="flex justify-center items-center">
-              {profilePhoto && (
-                <Image
-                  src={profilePhoto.imageUrl}
-                  alt={profilePhoto.description}
-                  width={300}
-                  height={300}
-                  className="rounded-full border-4 border-primary shadow-lg"
-                  data-ai-hint={profilePhoto.imageHint}
-                  priority
-                />
-              )}
-            </div>
-          </section>
-        </AnimatedSection>
+          </AnimatedSection>
+          <AnimatedSection direction="right" className="flex justify-center items-center">
+            {profilePhoto && (
+              <Image
+                src={profilePhoto.imageUrl}
+                alt={profilePhoto.description}
+                width={300}
+                height={300}
+                className="rounded-full border-4 border-primary shadow-lg"
+                data-ai-hint={profilePhoto.imageHint}
+                priority
+              />
+            )}
+          </AnimatedSection>
+        </section>
 
         <Separator />
 
@@ -94,7 +92,7 @@ export default function Home() {
 
         <Separator />
 
-        <AnimatedSection>
+        <AnimatedSection direction="left">
           <section id="projects" className="container py-24 bg-muted/20">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
               Projects Showcase
@@ -109,7 +107,7 @@ export default function Home() {
 
         <Separator />
 
-        <AnimatedSection>
+        <AnimatedSection direction="right">
           <section id="education" className="container py-24">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
               Education
