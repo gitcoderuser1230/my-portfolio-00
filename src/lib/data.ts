@@ -47,9 +47,9 @@ export const skills = {
 
 export const education = [
   {
-    institution: "XYZ University of Engineering",
+    institution: "Chandigarh Group of Colleges, Landran, Punjab",
     degree: "Bachelor of Technology in Computer Science & Engineering",
-    duration: "2021 - 2025",
+    duration: "2024 - 2028",
     description:
       "Specializing in Data Science. Maintained a GPA of 3.8/4.0. Actively involved in the university's AI Club and coding competitions, leading a team to win the annual hackathon.",
   },
