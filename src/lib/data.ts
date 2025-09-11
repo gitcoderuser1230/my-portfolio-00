@@ -10,7 +10,7 @@ export const contact = {
   email: "paramveer@example.com",
   linkedin: "https://www.linkedin.com/in/paramveer-singh-169b1034b",
   github: "https://github.com/gitcoderuser1230/gitcoderuser1230",
-  twitter: "#",
+  twitter: "https://twitter.com",
 };
 
 export const skills = {
