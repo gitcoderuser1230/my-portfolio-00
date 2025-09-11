@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "profile-photo",
+      "description": "A professional headshot of Paramveer Singh",
+      "imageUrl": "https://picsum.photos/seed/paramveer/400/400",
+      "imageHint": "professional man"
+    }
+  ]
 }
