@@ -43,14 +43,15 @@ export function ProjectCard({ project }: { project: Project }) {
         toast({
           variant: "destructive",
           title: "AI Analysis Failed",
-          description: "Could not analyze project skills. Please try again later.",
+          description: "Using fallback to display tech stack. To see AI-analyzed skills, please ensure the Generative Language API is enabled in your Google Cloud project.",
         });
+        setAnalyzedSkills(project.techStack);
       } finally {
         setIsLoading(false);
       }
     }
     getSkills();
-  }, [project.description, toast]);
+  }, [project.description, project.techStack, toast]);
 
   return (
     <Card className="flex flex-col h-full hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
