@@ -51,7 +51,7 @@ export const education = [
     degree: "Bachelor of Technology in Computer Science & Engineering",
     duration: "2024 - 2028",
     description:
-      "Specializing in Data Science. Maintained a GPA of 3.8/4.0. Actively involved in the university's AI Club and coding competitions, leading a team to win the annual hackathon.",
+      "Specializing in Data Science. Maintained a GPA of 3.8/4.0. Actively involved in the college's AI Club and coding competitions, leading a team to win the annual hackathon.",
   },
 ];
 
