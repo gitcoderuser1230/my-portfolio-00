@@ -37,7 +37,7 @@ export default function PortfolioPage() {
         <Header />
         <main className="flex-1">
           <section id="hero" className="container grid grid-cols-1 md:grid-cols-3 gap-8 py-20 md:py-32">
-            <AnimatedSection direction="left" className="flex flex-col justify-center items-center md:items-start text-center md:text-left col-span-2">
+            <AnimatedSection direction="left" className="flex flex-col justify-center items-center md:items-start text-center md:text-left md:col-span-2">
               <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-4">
                 {profile.name}
               </h1>
@@ -47,7 +47,7 @@ export default function PortfolioPage() {
               <p className="max-w-xl text-lg text-foreground/80 mb-8">
                 {profile.introduction}
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg">
                   <a href="#contact">
                     Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
@@ -65,7 +65,7 @@ export default function PortfolioPage() {
                   alt={profilePhoto.description}
                   width={300}
                   height={300}
-                  className="rounded-full border-4 border-primary shadow-lg"
+                  className="rounded-full border-4 border-primary shadow-lg w-[200px] h-[200px] md:w-[300px] md:h-[300px]"
                   data-ai-hint={profilePhoto.imageHint}
                   priority
                 />

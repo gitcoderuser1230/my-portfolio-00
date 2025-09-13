@@ -1,3 +1,4 @@
+
 "use client"
 
 import {
@@ -34,7 +35,7 @@ export function EducationChart({ data }: EducationChartProps) {
   return (
     <ChartContainer config={chartConfig} className="w-full h-full">
       <ResponsiveContainer>
-        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 10, bottom: 0 }}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis
             dataKey="semester"
@@ -49,20 +50,23 @@ export function EducationChart({ data }: EducationChartProps) {
             axisLine={false}
             tickMargin={10}
             stroke="hsl(var(--muted-foreground))"
-            label={{ value: "CGPA", angle: -90, position: 'insideLeft', offset: 10, style: { fill: 'hsl(var(--muted-foreground))' } }}
+            label={{ value: "CGPA", angle: -90, position: 'insideLeft', offset: 0, style: { fill: 'hsl(var(--muted-foreground))' } }}
           />
           <Tooltip
             cursor={false}
             content={<ChartTooltipContent 
               indicator="dot"
               labelClassName="font-bold text-lg"
-              formatter={(value, name, props) => {
-                if (props.payload.cgpa === null) {
-                  return [`Upcoming`, 'Status']
-                }
-                // Only show the first item (bar) to avoid duplication
-                if (props.payloadIndex === 0) {
-                  return [`${value}`, 'CGPA']
+              formatter={(value, name, item, index, payload) => {
+                if (payload && payload.length > 0) {
+                  const entry = payload[0];
+                  if (entry.payload.cgpa === null) {
+                    if (index === 0) return ['Upcoming', 'Status'];
+                    return null;
+                  }
+                  if (index === 0) {
+                     return [`${entry.value}`, 'CGPA'];
+                  }
                 }
                 return null;
               }}
