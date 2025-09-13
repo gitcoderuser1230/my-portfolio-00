@@ -29,13 +29,12 @@ type EducationChartProps = {
 }
 
 export function EducationChart({ data }: EducationChartProps) {
-  const filteredData = data.filter(item => item.cgpa !== null);
   const allData = data;
 
   return (
     <ChartContainer config={chartConfig} className="w-full h-full">
       <ResponsiveContainer>
-        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: -10, bottom: 0 }}>
+        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis
             dataKey="semester"
@@ -61,7 +60,11 @@ export function EducationChart({ data }: EducationChartProps) {
                 if (props.payload.cgpa === null) {
                   return [`Upcoming`, 'Status']
                 }
-                return [`${value}`, 'CGPA']
+                // Only show the first item (bar) to avoid duplication
+                if (props.payloadIndex === 0) {
+                  return [`${value}`, 'CGPA']
+                }
+                return null;
               }}
             />}
           />
