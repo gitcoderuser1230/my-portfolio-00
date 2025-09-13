@@ -1,4 +1,3 @@
-
 "use client"
 
 import {
@@ -57,15 +56,12 @@ export function EducationChart({ data }: EducationChartProps) {
             content={<ChartTooltipContent 
               indicator="dot"
               labelClassName="font-bold text-lg"
-              formatter={(value, name, item, index, payload) => {
-                if (payload && payload.length > 0) {
-                  const entry = payload[0];
-                  if (entry.payload.cgpa === null) {
-                    return ['Upcoming', 'Status'];
-                  }
-                  if (name === "cgpa") {
-                     return [`${value}`, 'CGPA'];
-                  }
+              formatter={(value, name, item) => {
+                if (item.payload.cgpa === null) {
+                  return ["Upcoming", "Status"];
+                }
+                if (name === "cgpa") {
+                  return [value, chartConfig.cgpa.label];
                 }
                 return null;
               }}
