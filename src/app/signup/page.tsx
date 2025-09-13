@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,25 +18,29 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
-import { Github, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.push("/portfolio");
+      await createUserWithEmailAndPassword(auth, email, password);
+      toast({
+        title: "Account Created",
+        description: "You can now log in.",
+      });
+      router.push("/");
     } catch (error: any) {
       toast({
         variant: "destructive",
-        title: "Login Failed",
+        title: "Signup Failed",
         description: error.message,
       });
     } finally {
@@ -48,13 +52,13 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl">Create an Account</CardTitle>
           <CardDescription>
-            Enter your credentials to access the portfolio.
+            Sign up to view the portfolio.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleSignup} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -78,15 +82,15 @@ export default function LoginPage() {
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Login
+              Sign Up
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
-          <p className="text-xs text-center text-muted-foreground">
-            Don't have an account?{" "}
-            <Link href="/signup" className="underline hover:text-primary">
-              Sign up
+        <CardFooter>
+          <p className="text-xs text-center text-muted-foreground w-full">
+            Already have an account?{" "}
+            <Link href="/" className="underline hover:text-primary">
+              Login
             </Link>
           </p>
         </CardFooter>
