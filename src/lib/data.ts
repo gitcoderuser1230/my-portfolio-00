@@ -45,14 +45,27 @@ export const skills = {
   ],
 };
 
+const sem1CGPA = 8.15;
+const sem2CGPA = 8.06;
+
 export const education = [
   {
-    degree: "Bachelor of Technology in Computer Science & Engineering",
+    course: "Bachelor of Technology in Computer Science & Engineering",
     specialization: "Data Science",
     institution: "Chandigarh Group of Colleges, Landran, Punjab",
     duration: "2024 - 2028",
-    cgpa: "8.11",
+    cgpa: ((sem1CGPA + sem2CGPA) / 2).toFixed(2),
     cgpaNote: "(till 2nd semester)",
+    semesters: [
+      { semester: "Sem 1", cgpa: sem1CGPA },
+      { semester: "Sem 2", cgpa: sem2CGPA },
+      { semester: "Sem 3", cgpa: null },
+      { semester: "Sem 4", cgpa: null },
+      { semester: "Sem 5", cgpa: null },
+      { semester: "Sem 6", cgpa: null },
+      { semester: "Sem 7", cgpa: null },
+      { semester: "Sem 8", cgpa: null },
+    ]
   },
 ];
 

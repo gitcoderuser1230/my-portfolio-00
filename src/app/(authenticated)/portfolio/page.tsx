@@ -18,12 +18,13 @@ import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction, GraduationCa
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection } from "@/components/animated-section";
+import { EducationChart } from "@/components/education-chart";
 
 export default function PortfolioPage() {
   const profilePhoto = PlaceHolderImages.find((p) => p.id === "profile-photo");
-  const { degree, specialization, institution, duration, cgpa, cgpaNote } = education[0];
+  const { course, specialization, institution, duration, cgpa, cgpaNote, semesters } = education[0];
   const educationDetails = [
-    { label: "Degree", value: degree, icon: GraduationCap },
+    { label: "Course", value: course, icon: GraduationCap },
     { label: "Specialization", value: specialization, icon: Star },
     { label: "College", value: institution, icon: School },
     { label: "Year", value: duration, icon: Calendar },
@@ -118,28 +119,48 @@ export default function PortfolioPage() {
           <Separator />
 
           <AnimatedSection direction="right">
-            <section id="education" className="container py-24">
+          <section id="education" className="container py-24">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                 Education
               </h2>
-              <div className="max-w-4xl mx-auto">
-                <Card className="bg-card/80 backdrop-blur-sm p-6 md:p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {educationDetails.map((detail, index) => (
-                       <AnimatedSection key={index} delay={index * 100}>
-                        <div className="flex items-start space-x-4">
-                          <div className="flex-shrink-0">
-                            <detail.icon className="h-8 w-8 text-primary" />
+              <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
+                <div className="lg:col-span-2">
+                  <Card className="bg-card/80 backdrop-blur-sm h-full">
+                    <CardHeader>
+                      <CardTitle className="font-headline text-2xl">Academic Details</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      {educationDetails.map((detail, index) => (
+                        <AnimatedSection key={index} delay={index * 100}>
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0 mt-1">
+                              <detail.icon className="h-6 w-6 text-primary" />
+                            </div>
+                            <div>
+                              <p className="text-sm text-muted-foreground">{detail.label}</p>
+                              <p className="text-lg font-semibold text-foreground/90">{detail.value}</p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="text-sm text-muted-foreground">{detail.label}</p>
-                            <p className="text-lg font-semibold text-foreground/90">{detail.value}</p>
-                          </div>
+                        </AnimatedSection>
+                      ))}
+                    </CardContent>
+                  </Card>
+                </div>
+                <div className="lg:col-span-3">
+                  <Card className="bg-card/80 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="font-headline text-2xl">Semester-wise Progress</CardTitle>
+                      <CardDescription>CGPA progression throughout the course.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <AnimatedSection delay={200}>
+                        <div className="h-[300px]">
+                           <EducationChart data={semesters} />
                         </div>
-                       </AnimatedSection>
-                    ))}
-                  </div>
-                </Card>
+                      </AnimatedSection>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </section>
           </AnimatedSection>
