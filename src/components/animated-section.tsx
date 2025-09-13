@@ -1,6 +1,8 @@
+
 "use client";
 
-import { useRef, useEffect, useState, type ReactNode } from "react";
+import { useRef, useEffect, type ReactNode } from "react";
+import anime from "animejs";
 import { cn } from "@/lib/utils";
 
 type AnimationDirection = "up" | "left" | "right";
@@ -18,48 +20,50 @@ export function AnimatedSection({
   delay = 0,
   direction = "up",
 }: AnimatedSectionProps) {
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
+    // Set initial state to be invisible
+    anime.set(currentRef, {
+      opacity: 0,
+      translateX: direction === "left" ? -40 : direction === "right" ? 40 : 0,
+      translateY: direction === "up" ? 40 : 0,
+    });
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          anime({
+            targets: currentRef,
+            opacity: 1,
+            translateX: 0,
+            translateY: 0,
+            duration: 800,
+            easing: "easeOutExpo",
+            delay: delay,
+          });
+          observer.unobserve(currentRef); // Animate only once
+        }
       },
       {
         rootMargin: "0px 0px -10% 0px",
       }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.observe(currentRef);
 
     return () => {
       if (currentRef) {
         observer.unobserve(currentRef);
       }
     };
-  }, []);
-
-  const animationClass = {
-    up: "animate-fade-in-up",
-    left: "animate-fade-in-left",
-    right: "animate-fade-in-right",
-  }[direction];
+  }, [delay, direction]);
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "transition-opacity duration-500",
-        isVisible ? "opacity-100" : "opacity-0",
-        isVisible && animationClass,
-        className
-      )}
-      style={{ animationDelay: `${delay}ms` }}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );
