@@ -61,11 +61,10 @@ export function EducationChart({ data }: EducationChartProps) {
                 if (payload && payload.length > 0) {
                   const entry = payload[0];
                   if (entry.payload.cgpa === null) {
-                    if (index === 0) return ['Upcoming', 'Status'];
-                    return null;
+                    return ['Upcoming', 'Status'];
                   }
-                  if (index === 0) {
-                     return [`${entry.value}`, 'CGPA'];
+                  if (name === "cgpa") {
+                     return [`${value}`, 'CGPA'];
                   }
                 }
                 return null;
