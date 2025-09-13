@@ -56,11 +56,15 @@ export function EducationChart({ data }: EducationChartProps) {
             content={<ChartTooltipContent 
               indicator="dot"
               labelClassName="font-bold text-lg"
-              formatter={(value, name, item) => {
+              formatter={(value, name, item, index) => {
                 if (item.payload.cgpa === null) {
-                  return ["Upcoming", "Status"];
+                  // For upcoming semesters, show only once.
+                  if (index === 0) {
+                     return ["Upcoming", "Status"];
+                  }
+                  return null;
                 }
-                if (name === "cgpa") {
+                if (name === "cgpa" && index === 0) { // Only render for the first item in the payload (either bar or line)
                   return [value, chartConfig.cgpa.label];
                 }
                 return null;
