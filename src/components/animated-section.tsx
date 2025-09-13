@@ -25,11 +25,14 @@ export function AnimatedSection({
     const currentRef = ref.current;
     if (!currentRef) return;
 
+    const getTranslateX = () => (direction === "left" ? -40 : direction === "right" ? 40 : 0);
+    const getTranslateY = () => (direction === "up" ? 40 : 0);
+
     // Set initial state to be invisible and offset
     anime.set(currentRef, {
       opacity: 0,
-      translateX: direction === "left" ? -40 : direction === "right" ? 40 : 0,
-      translateY: direction === "up" ? 40 : 0,
+      translateX: getTranslateX(),
+      translateY: getTranslateY(),
     });
 
     const observer = new IntersectionObserver(
@@ -45,7 +48,13 @@ export function AnimatedSection({
             easing: "easeOutExpo",
             delay: delay,
           });
-          observer.unobserve(currentRef); // Ensure the animation runs only once
+        } else {
+            // Reset when out of view
+            anime.set(currentRef, {
+                opacity: 0,
+                translateX: getTranslateX(),
+                translateY: getTranslateY(),
+            });
         }
       },
       {
