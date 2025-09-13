@@ -3,7 +3,6 @@
 
 import { useRef, useEffect, type ReactNode } from "react";
 import anime from "animejs";
-import { cn } from "@/lib/utils";
 
 type AnimationDirection = "up" | "left" | "right";
 
@@ -26,7 +25,7 @@ export function AnimatedSection({
     const currentRef = ref.current;
     if (!currentRef) return;
 
-    // Set initial state to be invisible
+    // Set initial state to be invisible and offset
     anime.set(currentRef, {
       opacity: 0,
       translateX: direction === "left" ? -40 : direction === "right" ? 40 : 0,
@@ -36,6 +35,7 @@ export function AnimatedSection({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Animate to the final state when in view
           anime({
             targets: currentRef,
             opacity: 1,
@@ -45,11 +45,11 @@ export function AnimatedSection({
             easing: "easeOutExpo",
             delay: delay,
           });
-          observer.unobserve(currentRef); // Animate only once
+          observer.unobserve(currentRef); // Ensure the animation runs only once
         }
       },
       {
-        rootMargin: "0px 0px -10% 0px",
+        rootMargin: "0px 0px -10% 0px", // Trigger animation when 10% of the element is visible
       }
     );
 
