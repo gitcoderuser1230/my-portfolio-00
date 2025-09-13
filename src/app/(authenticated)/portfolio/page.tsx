@@ -14,13 +14,21 @@ import { ContactForm } from "@/components/contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction, GraduationCap, School, BookOpen, Calendar, Star } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection } from "@/components/animated-section";
 
 export default function PortfolioPage() {
   const profilePhoto = PlaceHolderImages.find((p) => p.id === "profile-photo");
+  const { degree, specialization, institution, duration, cgpa, cgpaNote } = education[0];
+  const educationDetails = [
+    { label: "Degree", value: degree, icon: GraduationCap },
+    { label: "Specialization", value: specialization, icon: Star },
+    { label: "College", value: institution, icon: School },
+    { label: "Year", value: duration, icon: Calendar },
+    { label: "CGPA", value: `${cgpa} ${cgpaNote}`, icon: BookOpen },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col bg-image-container">
@@ -114,23 +122,24 @@ export default function PortfolioPage() {
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                 Education
               </h2>
-              <div className="max-w-3xl mx-auto">
-                {education.map((edu, index) => (
-                  <Card key={index} className="mb-8 bg-card/80 backdrop-blur-sm">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="font-headline text-2xl">{edu.institution}</CardTitle>
-                          <p className="text-primary font-semibold">{edu.degree}</p>
+              <div className="max-w-4xl mx-auto">
+                <Card className="bg-card/80 backdrop-blur-sm p-6 md:p-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {educationDetails.map((detail, index) => (
+                       <AnimatedSection key={index} delay={index * 100}>
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0">
+                            <detail.icon className="h-8 w-8 text-primary" />
+                          </div>
+                          <div>
+                            <p className="text-sm text-muted-foreground">{detail.label}</p>
+                            <p className="text-lg font-semibold text-foreground/90">{detail.value}</p>
+                          </div>
                         </div>
-                        <Badge variant="outline">{edu.duration}</Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription>{edu.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                ))}
+                       </AnimatedSection>
+                    ))}
+                  </div>
+                </Card>
               </div>
             </section>
           </AnimatedSection>

@@ -47,11 +47,12 @@ export const skills = {
 
 export const education = [
   {
-    institution: "Chandigarh Group of Colleges, Landran, Punjab",
     degree: "Bachelor of Technology in Computer Science & Engineering",
+    specialization: "Data Science",
+    institution: "Chandigarh Group of Colleges, Landran, Punjab",
     duration: "2024 - 2028",
-    description:
-      "Specializing in Data Science. Maintained a GPA of 3.8/4.0. Actively involved in the college's AI Club and coding competitions, leading a team to win the annual hackathon.",
+    cgpa: "8.11",
+    cgpaNote: "(till 2nd semester)",
   },
 ];
 
