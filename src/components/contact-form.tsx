@@ -43,7 +43,8 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `From: ${values.email}\n\n${values.message}`
     );
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, '_blank');
     
     toast({
       title: "Email Client Opened",
