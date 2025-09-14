@@ -42,7 +42,7 @@ export function EducationChart({ data }: EducationChartProps) {
             tickMargin={10}
             axisLine={false}
             stroke="hsl(var(--muted-foreground))"
-            label={{ value: "Semester", position: 'insideBottom', offset: -5, style: { fill: 'hsl(var(--muted-foreground))' } }}
+            label={{ value: "Semester", position: 'insideBottom', offset: -15, style: { fill: 'hsl(var(--muted-foreground))' } }}
           />
           <YAxis 
             domain={[0, 10]}
