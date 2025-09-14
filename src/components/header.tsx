@@ -24,11 +24,12 @@ export function Header() {
   const navLinks = [
     { href: "/portfolio#skills", label: "Skills" },
     { href: "/portfolio#projects", label: "Projects" },
+    { href: "/experience", label: "Experience" },
     { href: "/portfolio#education", label: "Education" },
     { href: "/portfolio#contact", label: "Contact" },
   ];
 
-  const isPortfolioPage = pathname.includes("/portfolio");
+  const isPortfolioPage = pathname.includes("/portfolio") || pathname.includes("/experience");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
