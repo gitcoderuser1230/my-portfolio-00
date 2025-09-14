@@ -34,7 +34,7 @@ export function EducationChart({ data }: EducationChartProps) {
   return (
     <ChartContainer config={chartConfig} className="w-full h-full">
       <ResponsiveContainer>
-        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 10, bottom: 0 }}>
+        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 10, bottom: 5 }}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis
             dataKey="semester"
@@ -42,6 +42,7 @@ export function EducationChart({ data }: EducationChartProps) {
             tickMargin={10}
             axisLine={false}
             stroke="hsl(var(--muted-foreground))"
+            label={{ value: "Semester", position: 'insideBottom', offset: -5, style: { fill: 'hsl(var(--muted-foreground))' } }}
           />
           <YAxis 
             domain={[0, 10]}
@@ -56,16 +57,20 @@ export function EducationChart({ data }: EducationChartProps) {
             content={<ChartTooltipContent 
               indicator="dot"
               labelClassName="font-bold text-lg"
-              formatter={(value, name, item, index) => {
-                if (item.payload.cgpa === null) {
-                  // For upcoming semesters, show only once.
-                  if (index === 0) {
-                     return ["Upcoming", "Status"];
-                  }
-                  return null;
+              labelFormatter={(label, payload) => {
+                if (payload && payload.length) {
+                  return `Sem ${label}`;
                 }
-                if (name === "cgpa" && index === 0) { // Only render for the first item in the payload (either bar or line)
-                  return [value, chartConfig.cgpa.label];
+                return label;
+              }}
+              formatter={(value, name, item, index) => {
+                // For upcoming semesters, show "Upcoming"
+                if (item.payload.cgpa === null) {
+                  return ["Upcoming", "Status"];
+                }
+                // For past semesters, show the CGPA
+                if (name === "cgpa" && typeof value === 'number') {
+                  return [value.toFixed(2), chartConfig.cgpa.label];
                 }
                 return null;
               }}

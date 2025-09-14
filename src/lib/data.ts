@@ -57,14 +57,14 @@ export const education = [
     cgpa: ((sem1CGPA + sem2CGPA) / 2).toFixed(2),
     cgpaNote: "(till 2nd semester)",
     semesters: [
-      { semester: "Sem 1", cgpa: sem1CGPA },
-      { semester: "Sem 2", cgpa: sem2CGPA },
-      { semester: "Sem 3", cgpa: null },
-      { semester: "Sem 4", cgpa: null },
-      { semester: "Sem 5", cgpa: null },
-      { semester: "Sem 6", cgpa: null },
-      { semester: "Sem 7", cgpa: null },
-      { semester: "Sem 8", cgpa: null },
+      { semester: "1", cgpa: sem1CGPA },
+      { semester: "2", cgpa: sem2CGPA },
+      { semester: "3", cgpa: null },
+      { semester: "4", cgpa: null },
+      { semester: "5", cgpa: null },
+      { semester: "6", cgpa: null },
+      { semester: "7", cgpa: null },
+      { semester: "8", cgpa: null },
     ]
   },
 ];
