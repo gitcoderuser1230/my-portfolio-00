@@ -66,11 +66,12 @@ export function EducationChart({ data }: EducationChartProps) {
               formatter={(value, name, item, index) => {
                 // For upcoming semesters, show "Upcoming"
                 if (item.payload.cgpa === null) {
-                  return ["Upcoming", "Status"];
+                  // Render only once for upcoming semesters
+                  return index === 0 ? ["Upcoming", "Status"] : null;
                 }
-                // For past semesters, show the CGPA
+                // For past semesters, show the CGPA, but only for the first item in the payload (either bar or line)
                 if (name === "cgpa" && typeof value === 'number') {
-                  return [value.toFixed(2), chartConfig.cgpa.label];
+                  return index === 0 ? [value.toFixed(2), chartConfig.cgpa.label] : null;
                 }
                 return null;
               }}
