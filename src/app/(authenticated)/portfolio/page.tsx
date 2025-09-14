@@ -14,7 +14,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction, GraduationCap, School, BookOpen, Calendar, Star } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowRight, Construction, GraduationCap, School, BookOpen, Calendar, Star, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection } from "@/components/animated-section";
@@ -113,6 +113,23 @@ export default function PortfolioPage() {
                 <h3 className="text-2xl font-semibold mb-2">Projects Coming Soon</h3>
                 <p>I'm currently working on exciting new projects. Please check back later!</p>
               </div>
+            </section>
+          </AnimatedSection>
+
+          <Separator />
+          
+          <AnimatedSection>
+            <section id="experience-link" className="container py-24 text-center">
+                <Briefcase className="mx-auto h-12 w-12 mb-4 text-primary" />
+                <h3 className="text-2xl font-semibold mb-4">Interested in my professional journey?</h3>
+                <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+                    While my projects showcase my technical skills, my experience page details my career growth and professional roles.
+                </p>
+                <Button asChild size="lg">
+                    <Link href="/experience">
+                        View My Experience <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                </Button>
             </section>
           </AnimatedSection>
 
