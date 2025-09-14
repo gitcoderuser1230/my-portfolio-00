@@ -10,47 +10,48 @@
 
 @layer base {
   :root {
-    --background: 240 2.8% 9.4%; /* #1C1C1C */
-    --foreground: 210 40% 98%;
-    --card: 240 2.8% 9.4%; /* #1C1C1C */
-    --card-foreground: 210 40% 98%;
-    --popover: 240 2.8% 9.4%; /* #1C1C1C */
-    --popover-foreground: 210 40% 98%;
-    --primary: 153 14.8% 28.6%; /* #435146 */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 180 100% 25.1%; /* #008080 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 150 20% 12.5%; /* #1B2922 */
-    --secondary-foreground: 210 40% 98%;
-    --muted: 150 20% 12.5%; /* #1B2922 */
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 157 15.6% 35.1%; /* #4A6958 */
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 175 73.5% 58.2%; /* #40E0D0 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 150 20% 12.5%; /* #1B2922 */
-    --input: 150 20% 12.5%; /* #1B2922 */
-    --ring: 153 14.8% 28.6%; /* #435146 */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 180 100% 25.1%; /* #008080 */
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 240 2.8% 9.4%; /* #1C1C1C */
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 240 2.8% 9.4%; /* #1C1C1C */
+    --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-    --popover: 240 2.8% 9.4%; /* #1C1C1C */
+    --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 153 14.8% 28.6%; /* #435146 */
+    --primary: 180 100% 25.1%; /* #008080 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 150 20% 12.5%; /* #1B2922 */
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 150 20% 12.5%; /* #1B2922 */
+    --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 157 15.6% 35.1%; /* #4A6958 */
+    --accent: 175 73.5% 58.2%; /* #40E0D0 */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 150 20% 12.5%; /* #1B2922 */
-    --input: 150 20% 12.5%; /* #1B2922 */
-    --ring: 153 14.8% 28.6%; /* #435146 */
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 180 100% 25.1%; /* #008080 */
   }
 }
 
@@ -63,9 +64,26 @@
   }
 
   .bg-image-container {
-    background-image: url('https://picsum.photos/seed/dark-forest/1920/1080');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(-45deg, #222222, #008080, #222222, #40E0D0);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
+
+  .dark .bg-image-container {
+    background: linear-gradient(-45deg, #121212, #004d4d, #1a1a1a, #002626);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
