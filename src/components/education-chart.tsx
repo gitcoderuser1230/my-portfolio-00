@@ -34,7 +34,7 @@ export function EducationChart({ data }: EducationChartProps) {
   return (
     <ChartContainer config={chartConfig} className="w-full h-full">
       <ResponsiveContainer>
-        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 10, bottom: 5 }}>
+        <ComposedChart data={allData} margin={{ top: 20, right: 20, left: 10, bottom: 20 }}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis
             dataKey="semester"
