@@ -64,26 +64,23 @@
   }
 
   .bg-image-container {
-    background: linear-gradient(-45deg, #222222, #008080, #222222, #40E0D0);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at 25% 30%, hsl(var(--primary) / 0.1), transparent 40%),
+      radial-gradient(circle at 75% 70%, hsl(var(--accent) / 0.1), transparent 40%);
+    background-size: 200% 200%;
+    animation: particle-flow 20s linear infinite;
   }
-
+  
   .dark .bg-image-container {
-    background: linear-gradient(-45deg, #121212, #004d4d, #1a1a1a, #002626);
-    background-size: 400% 400%;
-    animation: gradient 20s ease infinite;
+    background-image:
+      radial-gradient(circle at 25% 30%, hsl(var(--primary) / 0.15), transparent 40%),
+      radial-gradient(circle at 75% 70%, hsl(var(--accent) / 0.15), transparent 40%);
   }
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+@keyframes particle-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
