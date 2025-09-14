@@ -182,7 +182,7 @@ export default function PortfolioPage() {
                 <div className="flex flex-col items-center justify-center space-y-6">
                   <h3 className="font-headline text-xl font-semibold">Or find me on</h3>
                   <div className="flex justify-center gap-6 text-foreground">
-                    <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
+                    <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}`} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                       <Mail className="h-8 w-8" />
                     </a>
                     <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
